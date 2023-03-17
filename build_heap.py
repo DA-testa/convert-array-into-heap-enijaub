@@ -1,6 +1,7 @@
 # python3
 
 import sys
+import os.path
 
 def build_heap(data):
     n = len(data)
@@ -31,11 +32,11 @@ def main():
         data = list(map(int, input("Elements: ").split()))
     elif input_type == "F":
         filename = input("Filename: ")
-        try:
+        if os.path.isfile(filename):
             with open(filename, "r") as f:
                 n = int(f.readline().strip())
                 data = list(map(int, f.readline().split()))
-        except FileNotFoundError:
+        else:
             print("Error: file not found")
             sys.exit()
     else:
